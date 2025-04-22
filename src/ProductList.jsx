@@ -267,6 +267,14 @@ function ProductList({ onHomeClick }) {
         }));
     };
 
+    // handles the added-to-cart state management when a plant is removed from the cart
+    const handleRemoveFromCart = (item_name) => {
+        setAddedToCart((prevState) => ({
+            ...prevState,
+            [item_name]: false
+        }))
+    }
+ 
     // returns the number of plants currently in the cart
     const countOfItems = () => {
         const number_of_items = cart.items.reduce((total, item) => {
@@ -319,7 +327,7 @@ function ProductList({ onHomeClick }) {
                                         <div className='product-title'>{item.name}</div>
                                         <div className='product-price'>{item.cost}</div>
                                         <div className='product-description'>{item.description}</div>
-                                        <button className="product-button"
+                                        <button className={addedToCart.hasOwnProperty(item.name) && addedToCart[item.name] ? "product-button added-to-cart" : "product-button"}
                                             onClick={() => handleAddToCart(item)}>
                                                 Add to Cart
                                         </button>
@@ -330,7 +338,9 @@ function ProductList({ onHomeClick }) {
                     ))}
                 </div>
             ) : (
-                <CartItem onContinueShopping={handleContinueShopping} />
+                <CartItem 
+                    onContinueShopping={handleContinueShopping} 
+                    onRemoveItem={handleRemoveFromCart}/>
             )}
         </div>
     );
