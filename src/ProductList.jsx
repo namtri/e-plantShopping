@@ -267,6 +267,7 @@ function ProductList({ onHomeClick }) {
         }));
     };
 
+    // returns the number of plants currently in the cart
     const countOfItems = () => {
         const number_of_items = cart.items.reduce((total, item) => {
             return total + item.quantity;
@@ -314,16 +315,14 @@ function ProductList({ onHomeClick }) {
                             <div className='product-list'>
                                 {grouping.plants.map((item, p_index) => (
                                     <div className='product-card' key={p_index}>
-                                        <div className='product-image'>
-                                            <img src={item.src} alt={item.name}/>
-                                        </div>
+                                        <img className='product-image' src={item.image} alt={item.name}/>
                                         <div className='product-title'>{item.name}</div>
-                                        <div>{item.cost}</div>
-                                        <div className="button_container">
-                                            <button
-                                                className="product-button"
-                                                onClick={() => handleAddToCart(item)}>Add to Cart</button>
-                                        </div>
+                                        <div className='product-price'>{item.cost}</div>
+                                        <div className='product-description'>{item.description}</div>
+                                        <button className="product-button"
+                                            onClick={() => handleAddToCart(item)}>
+                                                Add to Cart
+                                        </button>
                                     </div>
                                 ))}
                             </div>
