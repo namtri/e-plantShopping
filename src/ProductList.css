@@ -58,6 +58,15 @@ body {
     align-items: center;
     justify-content: center;
 }
+.product-category {
+    padding: 20px;
+    background-color: #4caf50;
+    margin: 10px;
+    text-align: center;
+}
+.product-category h1 {
+    color: white;
+}
 
 /* Product Card */
 .product-card {
