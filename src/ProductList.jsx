@@ -328,6 +328,7 @@ function ProductList({ onHomeClick }) {
                                         <div className='product-price'>{item.cost}</div>
                                         <div className='product-description'>{item.description}</div>
                                         <button className={addedToCart.hasOwnProperty(item.name) && addedToCart[item.name] ? "product-button added-to-cart" : "product-button"}
+                                            disabled={addedToCart.hasOwnProperty(item.name) && addedToCart[item.name] ? true : null}
                                             onClick={() => handleAddToCart(item)}>
                                                 Add to Cart
                                         </button>
